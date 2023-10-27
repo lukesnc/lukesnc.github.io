@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BPM Converter</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <h1>Convert beats per minute to Hz and milliseconds</h1>
+    <p>Perfect for setting delays, plugin parameters and LFOs</p>
+
+    <input type="text" name="bpm" id="bpm" placeholder="Enter a tempo" />
+
+    <h2 class="results-heading"></h2>
+    <div class="parent">
+      <div class="div1">
+        <p class="results-note"></p>
+      </div>
+      <div class="div2">
+        <p class="results-hz"></p>
+      </div>
+      <div class="div3">
+        <p class="results-ms"></p>
+      </div>
+    </div>
+
+    <p class="legend hide">** 1/4 = quarter note **</p>
+  </body>
+</html>
