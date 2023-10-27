@@ -11,6 +11,11 @@ body {
   align-items: center;
 }
 
+body p,
+body h1 {
+  text-align: center;
+}
+
 h1 {
   color: lightblue;
 }
@@ -20,12 +25,12 @@ input {
   outline: none;
   text-align: center;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .results-heading {
   color: lightgreen;
   font-size: xx-large;
-  padding-top: 2rem;
 }
 
 .parent {
