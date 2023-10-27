@@ -42,8 +42,8 @@ userInput.addEventListener("input", (e) => {
 });
 
 function convert(bpm) {
-  const results = [];
-  for (let note of NOTES) {
+  let results = [];
+  for (const note of NOTES) {
     let hz = bpm / 60 / (4 * note.value);
     hz = hz.toFixed(3);
 
