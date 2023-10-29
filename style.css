@@ -42,24 +42,28 @@ input {
   font-size: xx-large;
 }
 
-.parent {
+.results-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   column-gap: 40px;
 }
 
-.parent p {
+.results-container p {
   text-align: right;
 }
 
-.div1 {
+.results-container span {
+  color: white;
+}
+
+.results-col1 {
   grid-area: 1 / 1 / 2 / 2;
 }
-.div2 {
+.results-col2 {
   grid-area: 1 / 2 / 2 / 3;
 }
-.div3 {
+.results-col3 {
   grid-area: 1 / 3 / 2 / 4;
   justify-self: start;
 }
@@ -70,10 +74,6 @@ input {
   color: goldenrod;
   font-size: x-large;
   line-height: 1.1em;
-}
-
-.parent span {
-  color: white;
 }
 
 .hide {

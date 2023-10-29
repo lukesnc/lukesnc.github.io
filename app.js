@@ -1,4 +1,5 @@
 // Author: lukesnc
+"use strict";
 
 const NOTES = [
   { value: 4, name: "4", symbol: "𝅝𝅝𝅝𝅝" },
@@ -32,11 +33,11 @@ userInput.addEventListener("input", (e) => {
 
   resultsHeading.textContent = bpm + " beats per minute";
   const converted = convert(bpm);
-  for (const entry of converted) {
-    //resultsNote.innerHTML += "<span>" + entry.symbol + "</span> ";
-    resultsNote.innerHTML += entry.note + "<br />";
-    resultsHz.innerHTML += entry.hz + " Hz<br />";
-    resultsMs.innerHTML += entry.ms + " ms<br />";
+  for (const row of converted) {
+    //resultsNote.innerHTML += "<span>" + row.symbol + "</span> ";
+    resultsNote.innerHTML += row.note + "<br />";
+    resultsHz.innerHTML += row.hz + " Hz<br />";
+    resultsMs.innerHTML += row.ms + " ms<br />";
   }
   legend.classList.remove("hide");
 });
@@ -48,7 +49,7 @@ function convert(bpm) {
     hz = hz.toFixed(3);
 
     let ms = (60000 / bpm) * (4 * note.value);
-    ms = Number.parseInt(ms);
+    ms = Math.round(ms);
 
     results.push({
       note: note.name,
