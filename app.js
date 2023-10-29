@@ -34,7 +34,7 @@ userInput.addEventListener("input", (e) => {
   resultsHeading.textContent = bpm + " beats per minute";
   const converted = convert(bpm);
   for (const row of converted) {
-    //resultsNote.innerHTML += "<span>" + row.symbol + "</span> ";
+    resultsNote.innerHTML += "<span>" + row.symbol + "</span> ";
     resultsNote.innerHTML += row.note + "<br />";
     resultsHz.innerHTML += row.hz + " Hz<br />";
     resultsMs.innerHTML += row.ms + " ms<br />";
