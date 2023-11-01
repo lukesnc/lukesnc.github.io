@@ -1,7 +1,7 @@
 // Author: lukesnc
 "use strict";
 
-const NOTES = [
+const notes = [
   { value: 4, name: "4", symbol: "𝅝𝅝𝅝𝅝" },
   { value: 2, name: "2", symbol: "𝅝𝅝" },
   { value: 1, name: "1", symbol: "𝅝" },
@@ -13,7 +13,6 @@ const NOTES = [
 ];
 
 const userInput = document.getElementById("bpm");
-
 const container = document.querySelector(".results-container");
 const heading = document.querySelector(".results-heading");
 const table = document.querySelector(".results-table");
@@ -30,34 +29,33 @@ userInput.addEventListener("input", (e) => {
 
   heading.textContent = bpm + " beats per minute";
   const converted = convert(bpm);
-  for (const data of converted) {
+  converted.forEach((data) => {
     const tr = document.createElement("tr");
-
     const symbol = document.createElement("span");
-    symbol.textContent = data.symbol;
-
     const note = document.createElement("td");
+    const hz = document.createElement("td");
+    const ms = document.createElement("td");
+
+    symbol.textContent = data.symbol;
     note.appendChild(symbol);
     note.appendChild(document.createTextNode(" " + data.note));
     tr.appendChild(note);
 
-    const hz = document.createElement("td");
     hz.textContent = data.hz + " Hz";
     tr.appendChild(hz);
 
-    const ms = document.createElement("td");
     ms.textContent = data.ms + " ms";
     tr.appendChild(ms);
 
     table.appendChild(tr);
-  }
+  });
 
   container.classList.remove("hide");
 });
 
 function convert(bpm) {
-  let results = [];
-  for (const note of NOTES) {
+  const results = [];
+  notes.forEach((note) => {
     let hz = bpm / 60 / (4 * note.value);
     hz = hz.toFixed(3);
 
@@ -65,11 +63,12 @@ function convert(bpm) {
     ms = Math.round(ms);
 
     results.push({
+      hz,
+      ms,
       note: note.name,
       symbol: note.symbol,
-      hz: hz,
-      ms: ms,
     });
-  }
+  });
+
   return results;
 }
