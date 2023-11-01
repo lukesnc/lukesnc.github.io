@@ -13,33 +13,46 @@ const NOTES = [
 ];
 
 const userInput = document.getElementById("bpm");
-userInput.addEventListener("input", (e) => {
-  const resultsNote = document.querySelector(".results-note");
-  const resultsHz = document.querySelector(".results-hz");
-  const resultsMs = document.querySelector(".results-ms");
-  const resultsHeading = document.querySelector(".results-heading");
-  const legend = document.querySelector(".legend");
 
-  resultsNote.textContent = "";
-  resultsHz.textContent = "";
-  resultsMs.textContent = "";
-  resultsHeading.textContent = "";
-  legend.classList.add("hide");
+const container = document.querySelector(".results-container");
+const heading = document.querySelector(".results-heading");
+const table = document.querySelector(".results-table");
+
+userInput.addEventListener("input", (e) => {
+  container.classList.add("hide");
 
   const bpm = Number.parseInt(userInput.value);
   if (Number.isNaN(bpm)) {
     return;
   }
 
-  resultsHeading.textContent = bpm + " beats per minute";
+  table.replaceChildren();
+
+  heading.textContent = bpm + " beats per minute";
   const converted = convert(bpm);
-  for (const row of converted) {
-    resultsNote.innerHTML += "<span>" + row.symbol + "</span> ";
-    resultsNote.innerHTML += row.note + "<br />";
-    resultsHz.innerHTML += row.hz + " Hz<br />";
-    resultsMs.innerHTML += row.ms + " ms<br />";
+  for (const data of converted) {
+    const tr = document.createElement("tr");
+
+    const symbol = document.createElement("span");
+    symbol.textContent = data.symbol;
+
+    const note = document.createElement("td");
+    note.appendChild(symbol);
+    note.appendChild(document.createTextNode(" " + data.note));
+    tr.appendChild(note);
+
+    const hz = document.createElement("td");
+    hz.textContent = data.hz + " Hz";
+    tr.appendChild(hz);
+
+    const ms = document.createElement("td");
+    ms.textContent = data.ms + " ms";
+    tr.appendChild(ms);
+
+    table.appendChild(tr);
   }
-  legend.classList.remove("hide");
+
+  container.classList.remove("hide");
 });
 
 function convert(bpm) {

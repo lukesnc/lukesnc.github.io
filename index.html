@@ -8,25 +8,20 @@
     <script src="app.js" defer></script>
   </head>
   <body>
-    <h1>Convert beats per minute to Hz and milliseconds</h1>
-    <p>Perfect for setting delays, plugin parameters and LFOs</p>
+    <main>
+      <h1>Convert beats per minute to Hz and milliseconds</h1>
+      <p>Perfect for setting delays, plugin parameters and LFOs</p>
 
-    <input type="text" name="bpm" id="bpm" placeholder="Enter a tempo" />
+      <input type="text" name="bpm" id="bpm" placeholder="Enter a tempo" />
 
-    <h2 class="results-heading"></h2>
-    <div class="results-container">
-      <div class="results-col1">
-        <p class="results-note"></p>
-      </div>
-      <div class="results-col2">
-        <p class="results-hz"></p>
-      </div>
-      <div class="results-col3">
-        <p class="results-ms"></p>
-      </div>
-    </div>
+      <div class="results-container hide">
+        <h2 class="results-heading"></h2>
 
-    <p class="legend hide">** 1/4 = quarter note **</p>
+        <table class="results-table"></table>
+
+        <p class="legend">** 1/4 = quarter note **</p>
+      </div>
+    </main>
 
     <footer>
       <p>&copy;2023 lukesnc</p>
