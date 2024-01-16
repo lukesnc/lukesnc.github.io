@@ -1,4 +1,3 @@
-// Author: lukesnc
 "use strict";
 
 const notes = [
@@ -29,7 +28,7 @@ userInput.addEventListener("input", (e) => {
 
   heading.textContent = bpm + " beats per minute";
   const converted = convert(bpm);
-  converted.forEach((data) => {
+  for (const data of converted) {
     const tr = document.createElement("tr");
     const symbol = document.createElement("span");
     const note = document.createElement("td");
@@ -48,14 +47,14 @@ userInput.addEventListener("input", (e) => {
     tr.appendChild(ms);
 
     table.appendChild(tr);
-  });
+  }
 
   container.classList.remove("hide");
 });
 
 function convert(bpm) {
   const results = [];
-  notes.forEach((note) => {
+  for (const note of notes) {
     let hz = bpm / 60 / (4 * note.value);
     hz = hz.toFixed(3);
 
@@ -68,7 +67,7 @@ function convert(bpm) {
       note: note.name,
       symbol: note.symbol,
     });
-  });
+  }
 
   return results;
 }
