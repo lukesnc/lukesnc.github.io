@@ -1,14 +1,17 @@
 "use strict";
 
 const notes = [
-  { value: 4, name: "4", symbol: "𝅝𝅝𝅝𝅝" },
-  { value: 2, name: "2", symbol: "𝅝𝅝" },
-  { value: 1, name: "1", symbol: "𝅝" },
-  { value: 1 / 2, name: "1/2", symbol: "𝅗𝅥" },
-  { value: 1 / 4, name: "1/4", symbol: "♩" },
-  { value: 1 / 8, name: "1/8", symbol: "𝅘𝅥𝅮" },
-  { value: 1 / 16, name: "1/16", symbol: "𝅘𝅥𝅯" },
-  { value: 1 / 32, name: "1/32", symbol: "𝅘𝅥𝅰" },
+  { value: 960, name: "4", symbol: "𝅝𝅝𝅝𝅝" },
+  { value: 480, name: "2", symbol: "𝅝𝅝" },
+  { value: 240, name: "1", symbol: "𝅝" },
+  { value: 120, name: "1/2", symbol: "𝅗𝅥" },
+  { value: 60, name: "1/4", symbol: "♩" },
+  { value: 40, name: "1/4T", symbol: "" },
+  { value: 30, name: "1/8", symbol: "𝅘𝅥𝅮" },
+  { value: 20, name: "1/8T", symbol: "" },
+  { value: 15, name: "1/16", symbol: "𝅘𝅥𝅯" },
+  { value: 10, name: "1/16T", symbol: "" },
+  { value: 7.5, name: "1/32", symbol: "𝅘𝅥𝅰" },
 ];
 
 const userInput = document.getElementById("bpm");
@@ -55,10 +58,10 @@ userInput.addEventListener("input", (e) => {
 function convert(bpm) {
   const results = [];
   for (const note of notes) {
-    let hz = bpm / 60 / (4 * note.value);
+    let hz = bpm / note.value;
     hz = hz.toFixed(3);
 
-    let ms = (60000 / bpm) * (4 * note.value);
+    let ms = (note.value / bpm) * 1000;
     ms = Math.round(ms);
 
     results.push({
